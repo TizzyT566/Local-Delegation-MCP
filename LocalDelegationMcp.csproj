@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>LocalDelegationMcp</RootNamespace>
+    <AssemblyName>local-delegation-mcp</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ModelContextProtocol.AspNetCore" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Exclude the throwaway API probe project and test project from compilation. -->
+    <Compile Remove="api-probe\**" />
+    <None Remove="api-probe\**" />
+    <Content Remove="api-probe\**" />
+    <Compile Remove="tests\**" />
+    <None Remove="tests\**" />
+    <Content Remove="tests\**" />
+
+    <!-- Ship the config file next to the executable (don't overwrite an existing one on redeploy). -->
+    <None Update="delegation.config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

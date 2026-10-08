@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151d">
+  <title>Delegation Console</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Delegated tasks">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div>
+          <div class="brand-name">Delegation Console</div>
+          <div class="brand-caption">Local model monitor</div>
+        </div>
+      </div>
+
+      <div class="sidebar-tools">
+        <div class="section-label">TASKS <span id="task-count" class="count">0</span></div>
+        <button id="refresh-button" class="icon-button" type="button" title="Refresh tasks" aria-label="Refresh tasks">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16.2 7.2A6.5 6.5 0 0 0 4.8 5.5L3 7.3M3 7.3V3.8M3 7.3h3.5M3.8 12.8a6.5 6.5 0 0 0 11.4 1.7l1.8-1.8m0 0v3.5m0-3.5h-3.5"/></svg>
+        </button>
+      </div>
+      <div class="filters" role="group" aria-label="Filter tasks">
+        <button class="filter-button active" data-filter="all" type="button">All</button>
+        <button class="filter-button" data-filter="active" type="button">Active</button>
+      </div>
+      <nav id="task-list" class="task-list" aria-label="Task list"></nav>
+      <div class="sidebar-footer">
+        <span id="connection-dot" class="connection-dot"></span>
+        <span id="connection-label">Connecting to server…</span>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <section id="empty-state" class="empty-state">
+        <div class="empty-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="orbit-core"><span></span></div>
+        </div>
+        <p class="eyebrow">LOCAL DELEGATION</p>
+        <h1>Follow the work<br>as it happens.</h1>
+        <p class="empty-copy">Tasks started by your frontier model will appear here, along with clarification requests, progress notes, and results.</p>
+        <div class="empty-hint"><span class="hint-dot"></span> Waiting for the first task</div>
+      </section>
+
+      <section id="task-view" class="task-view" hidden>
+        <header class="task-header">
+          <div class="task-heading">
+            <div class="task-title-line">
+              <span id="detail-task-id" class="task-id">TASK 0000</span>
+              <span id="detail-status" class="status-pill">Running</span>
+            </div>
+            <h1 id="detail-title"></h1>
+            <p id="detail-meta" class="task-meta"></p>
+          </div>
+          <button id="mobile-back" class="mobile-back" type="button" aria-label="Back to tasks">Tasks</button>
+        </header>
+
+        <div id="progress-banner" class="progress-banner" hidden>
+          <div class="progress-icon" aria-hidden="true"><span></span></div>
+          <div class="progress-copy">
+            <span class="progress-label">LATEST PROGRESS</span>
+            <p id="progress-text"></p>
+          </div>
+          <time id="progress-time" class="progress-time"></time>
+        </div>
+
+        <div id="criteria-panel" class="criteria-panel" hidden>
+          <span class="criteria-label">COMPLETION CRITERIA</span>
+          <p id="criteria-text"></p>
+        </div>
+
+        <section id="conversation" class="conversation" aria-label="Task conversation" aria-live="polite"></section>
+        <div id="terminal-card" class="terminal-card" hidden></div>
+        <footer class="conversation-footer">
+          <span class="footer-rule"></span>
+          <span>End of conversation</span>
+          <span class="footer-rule"></span>
+        </footer>
+      </section>
+    </main>
+  </div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

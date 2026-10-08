@@ -1,0 +1,15 @@
+{
+  "listenPort": 8765,
+  "openAi": {
+    "baseUrl": "http://localhost:1234/v1",
+    "apiKey": "lm-studio",
+    "model": "local-model"
+  },
+  "agent": {
+    "maxIterationsPerTask": 25,
+    "maxConcurrentTasks": 4,
+    "llmRequestTimeoutSeconds": 300,
+    "systemPrompt": "You are a capable assistant working on delegated tasks from a parent model. Use your available tools to accomplish the work step by step. For longer tasks, call report_progress with a concise note at meaningful milestones so the parent can see what is happening; avoid repetitive updates. When you have finished, call complete_task with a clear summary of what you did and the result. If you lack information needed to proceed correctly, call clarify_task with a specific question."
+  },
+  "externalMcpServers": []
+}
